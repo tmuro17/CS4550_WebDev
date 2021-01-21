@@ -1,0 +1,33 @@
+Please fill in answers to the questions below:
+
+
+1. What's your name?
+Tanner Muro
+
+2. Which VPS & domain providers did you choose?
+Domain Provide: Hover
+VPS: Linode
+
+3. What domain name did you register?
+tmuro17.xyz
+
+4. What's the URL of your Github repository for this assignment?
+https://github.com/tmuro17/CS4550_WebDev
+
+5. Which parts of this assignment did you have trouble with, if any?
+No trouble with the website and the VPS.  Setting up the VirtualBox
+Debian instance on my Mac was a very large issue as if you clicked on
+the wrong option at the wrong time it would cause the application
+to crash, however with some trial and error I was able to get it to
+work.
+
+And here's a list of tasks for grading comments. Just leave this here:
+ - Task 1
+ - Task 2
+ - Task 3
+ - Task 4
+ - Task 5
+ - Task 6
+ - Task 7
+ - Task 8
+ - Task 9

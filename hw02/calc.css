@@ -1,0 +1,34 @@
+#num-display {
+    width: 206px;
+    height: 25px;
+
+    text-align: right;
+    alignment-baseline: center;
+
+    border-style: solid;
+    border-color: black;
+    font-size: larger;
+
+    background: lightgray;
+}
+
+.calc-button {
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+
+    font-size: larger;
+
+    border-style: solid;
+    border-color: black;
+
+    background: lightgray;
+
+    alignment: center;
+    alignment-baseline: center;
+}
+
+.calc-button:active {
+    color: black;
+    background: white;
+}

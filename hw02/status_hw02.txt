@@ -1,0 +1,43 @@
+Please fill in answers to the questions below:
+
+
+1. What's your name?
+Tanner Muro
+
+2. What hostname did you deploy to?
+hw02.tmuro17.xyz
+
+3. What's the link to your repository on github with your code?
+https://github.com/tmuro17/CS4550_WebDev
+
+4. How many HTML / CSS tutorial exercises did you do?
+HTML: ~20
+CSS: ~15
+5. How comfortable do you feel with HTML and CSS now?
+Pretty confident, and I can look up various information in the
+W3Schools references.
+
+6. How many JS tutorial exercises did you do?
+~13
+
+7. How comfortable do you feel with JS now?
+I feel fairly confident with basic JS.
+
+8. Do all of your HTML pages pass the W3C HTML validator?
+(https://validator.w3.org/)
+Yes
+
+9. Which parts of this assignment did you have trouble with, if any?
+There were no parts of the assignment that I experienced any real
+trouble with.
+
+
+And here's a list of tasks for grading comments. Just leave this here:
+ - Task 1
+ - Task 2
+ - Task 3
+ - Task 4
+ - Task 5
+ - Task 6
+ - Task 7
+ - Task 8

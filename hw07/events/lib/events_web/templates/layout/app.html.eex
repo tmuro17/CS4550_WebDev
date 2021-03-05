@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Events · Phoenix Framework</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+</head>
+<body>
+<header>
+    <div role="main" class="container">
+        <div class="row">
+            <div class="col">
+                <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
+                <p><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></p>
+                <% end %>
+            </div>
+            <%= if @conn.assigns[:current_user] do %>
+            <div>
+                User: <%= @current_user.name %>
+                <%= link("Logout", to: Routes.session_path(@conn, :delete), method: :delete, class: "btn btn-outline-primary")%>
+            </div>
+            <% else %>
+            <div class="col">
+                <%= form_for @conn, Routes.session_path(@conn, :create),
+                [class: "form-inline"], fn f -> %>
+                <div class="form-group">
+                    <%= text_input f, :email, class: "form-control" %>
+                    <%= submit "Login", class: "btn btn-primary"%>
+                </div>
+            </div>
+            <% end %>
+            <div class="col">
+                <%= link "Register", to: Routes.user_path(@conn, :new), class: "btn btn-secondary"%>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</header>
+<main role="main" class="container">
+    <%= if get_flash(@conn, :info) do %>
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+    <% end %>
+
+    <%= if get_flash(@conn, :error) do %>
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <% end %>
+
+    <%= @inner_content %>
+</main>
+</body>
+</html>

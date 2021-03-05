@@ -1,23 +1,16 @@
 <h1>Show Event</h1>
 
-<ul>
+<form class="form-group">
+    <label class="form-label">Name</label>
+    <input type="text" class="form-control" value="<%= @event.name%>" readonly>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @event.name %>
-  </li>
+    <label class="form-label">Date</label>
+    <input type="text" class="form-control" value="<%= @event.date%>" readonly>
 
-  <li>
-    <strong>Date:</strong>
-    <%= @event.date %>
-  </li>
-
-  <li>
-    <strong>Description:</strong>
-    <%= @event.description %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.event_path(@conn, :edit, @event) %></span>
-<span><%= link "Back", to: Routes.event_path(@conn, :index) %></span>
+    <label class="form-label">Description</label>
+    <textarea class="form-control" readonly>
+      <%= @event.description%>
+    </textarea>
+</form>
+<span><%= link "Edit", to: Routes.event_path(@conn, :edit, @event), class: "btn btn-primary" %></span>
+<span><%= link "Back", to: Routes.event_path(@conn, :index), class: "btn btn-secondary" %></span>

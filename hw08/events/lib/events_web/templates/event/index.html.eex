@@ -1,0 +1,28 @@
+<h1>Events</h1>
+<div>
+    <%= if @conn.assigns[:current_user] != nil do %>
+    <%= link "New Event", to: Routes.event_path(@conn, :new), class: "btn btn-primary" %>
+    <% end %>
+    <%= link "Home", to: Routes.page_path(@conn, :index), class: "btn btn-secondary" %>
+</div>
+<br/>
+
+<div class="container">
+    <%= for event <- @events do %>
+    <div class="row-cols-xl-1">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><%= event.name %></h5>
+                    <p class="card-text"><%= event.date %></p>
+                    <p class="card-text"><%= event.description %></p>
+                    <%= link "Show", to: Routes.event_path(@conn, :show, event), class: "btn btn-outline-primary" %>
+                    <%= link "Edit", to: Routes.event_path(@conn, :edit, event), class: "btn btn-outline-secondary" %>
+                    <%= link "Delete", to: Routes.event_path(@conn, :delete, event), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-outline-danger" %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% end %>
+</div>
+

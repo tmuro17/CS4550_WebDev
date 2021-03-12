@@ -1,0 +1,84 @@
+<h1>Show Event</h1>
+<%= if @conn.assigns[:current_user] != nil do%>
+<form class="form-group">
+    <label class="form-label">Name</label>
+    <input type="text" class="form-control" value="<%= @event.name%>" readonly>
+
+    <label class="form-label">Date</label>
+    <input type="text" class="form-control" value="<%= @event.date%>" readonly>
+
+    <label class="form-label">Description</label>
+    <textarea class="form-control" readonly>
+      <%= @event.description%>
+    </textarea>
+</form>
+<%= if Events.CalEvents.is_owner?(@event.id, @conn.assigns[:current_user]) do %>
+<span><%= link "Edit", to: Routes.event_path(@conn, :edit, @event), class: "btn btn-primary" %></span>
+<span><%= link "Invite", to: Routes.invite_path(@conn, :new, %{event_id: @event.id}), class: "btn btn-secondary" %></span>
+<% end %>
+<%= if Events.CalEvents.is_invitee?(@event.id, @conn.assigns[:current_user]) do %>
+<%= link "Respond", to: Routes.invite_path(@conn, :edit, @invite_id), class: "btn btn-primary" %>
+ <% end %>
+<span><%= link "Back", to: Routes.page_path(@conn, :index), class: "btn btn-secondary" %></span>
+
+<div>
+    <br/>
+    <h4>Responses:</h4>
+    <dl>
+        <dd><strong>Yes: </strong><%= @num_yes %></dd>
+        <dd><strong>Maybe: </strong><%= @num_maybe %></dd>
+        <dd><strong>No: </strong><%= @num_no %></dd>
+        <dd><strong>Haven't Responded: </strong><%= @num_havent %></dd>
+    </dl>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Invitee</th>
+            <th scope="col">Response</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= for invite <- @invites do %>
+        <tr>
+            <td><%= invite.invitee %> </td>
+            <td><%= invite.response %></td>
+        </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>
+
+
+<div>
+    <%= if Events.CalEvents.is_invitee?(@event.id, @conn.assigns[:current_user]) do
+ link("New Comment", to: Routes.comment_path(@conn, :new, %{event_id: @event.id}), class: "btn btn-secondary")
+ end %>
+
+    <div class="container">
+        <br/>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+        <%= for {comment, user} <- @comment_details do %>
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text">Author: <%= user.name %></p>
+                        <p class="card-text"><%= comment.text %></p>
+                        <%= if Events.Comments.is_author?(comment.id, @conn.assigns[:current_user]) or
+                               Events.CalEvents.is_owner?(@event.id, @conn.assigns[:current_user])
+                         do
+                          link "Delete", to: Routes.comment_path(@conn, :delete, comment), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-outline-danger"
+                        end %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        </div>
+        <br/>
+    </div>
+</div>
+<% else %>
+<p><strong>Login or Register to view event if authorized</strong></p>
+<% end %>
+
+
+

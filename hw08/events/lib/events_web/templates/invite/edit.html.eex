@@ -1,0 +1,6 @@
+<h1>Respond To Invite</h1>
+
+<%= render "respond_form.html", Map.put(assigns, :action, Routes.invite_path(@conn, :update, @invite)) %>
+
+<br/>
+<span><%= link "Cancel", to: Routes.invite_path(@conn, :index), class: "btn btn-secondary" %></span>
